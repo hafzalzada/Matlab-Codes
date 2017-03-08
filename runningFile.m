@@ -1,26 +1,38 @@
 
-DF = 0.8;
+DF = 0.9;
 ShockSize = 2;
 S_val = 10;
 Step_Size=100; 
 
+
 wC = 0.2;
-wI =0.2;
-wA =0.3; 
-wK =0.3;
+wI =0.6;
+wA =0.1;
+wK =0.1;
+
+
+
+
+total_vals = wC + wI + wA;
+
+
+chi_val = wC / total_vals;
+lambda_val = wI / total_vals;
+eta_val = wA / total_vals;
+
 
 
 %Initial Values for C and I for StateDynamics File
-C0 = 1;
-I0 = 1;
+C0 = 10;
+I0 = 10;
 A0=0;
 K0=0;
 
 %Target values for C, I, A and K for Loss Function File
-C_target = 20;
-I_target =20;
-A_target = 30;
-K_target = 30;
+C_target = 100;
+I_target = 100;
+A_target = 100;
+K_target = 100;
 
 C_init = C_target;
 I_init = I_target;
@@ -87,10 +99,10 @@ for i=2:Steps
         psi = 0.1;
         
         %Variables for  Knew
-        nu=0.3;
-        chi=0.8;
-        lambda=0.2;
-        eta= 0.1;
+        nu=0.5;
+        chi=chi_val; 
+        lambda=lambda_val; 
+        eta=eta_val; 
         
         
     elseif C>0
@@ -121,12 +133,11 @@ for i=2:Steps
         epsilon = 0.1; 
         psi = 0.1; 
         
-        %Variables for  Knew
-        nu=0.3;
-        chi=0.8; 
-        lambda=0.2; 
-        eta= 0.1; 
-        
+        %Variables for  Knew 
+        nu=0.5;
+        chi=chi_val; 
+        lambda=lambda_val; 
+        eta=eta_val; 
         
         
     end
@@ -230,10 +241,10 @@ for i=2:Steps
         psi = 0.1;
         
         %Variables for  Knew
-        nu=0.3;
-        chi=0.8;
-        lambda=0.2;
-        eta= 0.1;
+        nu=0.5;
+        chi=chi_val; 
+        lambda=lambda_val; 
+        eta=eta_val; 
         
         
     elseif C>0
@@ -265,11 +276,10 @@ for i=2:Steps
         psi = 0.1; 
         
         %Variables for  Knew
-        nu=0.3;
-        chi=0.8; 
-        lambda=0.2; 
-        eta= 0.1; 
-        
+     nu=0.5;
+        chi=chi_val; 
+        lambda=lambda_val; 
+        eta=eta_val; 
     end
     C;
     
@@ -324,10 +334,10 @@ for j = 1:Steps
     
     Impulse1(j,:)=Z(j,:)-Z0(j,:);
     
-    if Impulse1(j,:)< 1e-4
-        Impulse1(j,:)=0;
-    end
-    
+%     if Impulse1(j,:)< 1e-4
+%         Impulse1(j,:)=0;
+%     end
+%     
 end
 Impulse1;
 
@@ -410,11 +420,10 @@ for i=2:Steps
         psi = 0.1;
         
         %Variables for  Knew
-        nu=0.3;
-        chi=0.8;
-        lambda=0.2;
-        eta= 0.1;
-        
+    nu=0.5;
+        chi=chi_val; 
+        lambda=lambda_val; 
+        eta=eta_val; 
         
     elseif C>0
         
@@ -445,10 +454,10 @@ for i=2:Steps
         psi = 0.1; 
         
         %Variables for  Knew
-        nu=0.3;
-        chi=0.8; 
-        lambda=0.2; 
-        eta= 0.1; 
+     nu=0.5;
+        chi=chi_val; 
+        lambda=lambda_val; 
+        eta=eta_val; 
         
         
         
@@ -552,10 +561,10 @@ for i=2:Steps
         psi = 0.1;
         
         %Variables for  Knew
-        nu=0.3;
-        chi=0.8;
-        lambda=0.2;
-        eta= 0.1;
+      nu=0.5;
+        chi=chi_val; 
+        lambda=lambda_val; 
+        eta=eta_val; 
         
         
     elseif C>0
@@ -587,10 +596,10 @@ for i=2:Steps
         psi = 0.1; 
         
         %Variables for  Knew
-        nu=0.3;
-        chi=0.8; 
-        lambda=0.2; 
-        eta= 0.1; 
+        nu=0.5;
+        chi=chi_val; 
+        lambda=lambda_val; 
+        eta=eta_val; 
         
     end
     C;
@@ -643,9 +652,9 @@ for j = 2:Steps
     Impulse2(j,:)=Z2(j,:)-Z02(j,:);
     
     
-    if Impulse2(j,:)< 1e-4
-        Impulse2(j,:)=0;
-    end
+%     if Impulse2(j,:)< 1e-4
+%         Impulse2(j,:)=0;
+%     end
     
 end
 Impulse2;
@@ -712,9 +721,9 @@ for i=2:Steps
         
         %Variables for  Knew
         nu=0.3;
-        chi=0.8;
-        lambda=0.2;
-        eta= 0.1;
+        chi=chi_val; 
+        lambda=lambda_val; 
+        eta=eta_val; 
         
         
     elseif C>0
@@ -747,9 +756,9 @@ for i=2:Steps
         
         %Variables for  Knew
         nu=0.3;
-        chi=0.8; 
-        lambda=0.2; 
-        eta= 0.1; 
+        chi=chi_val; 
+        lambda=lambda_val; 
+        eta=eta_val; 
         
     end
     C;
@@ -856,11 +865,10 @@ for i=2:Steps
         psi = 0.1;
         
         %Variables for  Knew
-        nu=0.3;
-        chi=0.8;
-        lambda=0.2;
-        eta= 0.1;
-        
+       nu=0.3;
+        chi=chi_val; 
+        lambda=lambda_val; 
+        eta=eta_val; 
         
     elseif C>0
         
@@ -891,11 +899,10 @@ for i=2:Steps
         psi = 0.1; 
         
         %Variables for  Knew
-        nu=0.3;
-        chi=0.8; 
-        lambda=0.2; 
-        eta= 0.1; 
-        
+      nu=0.3;
+        chi=chi_val; 
+        lambda=lambda_val; 
+        eta=eta_val; 
     end
     C;
     
@@ -945,9 +952,9 @@ for j = 1:Steps
     
     
     Impulse3(j,:)=Z3(j,:)- Z03(j,:);
-    if Impulse3(j,:)< 1e-4
-        Impulse3(j,:)=0;
-    end
+%     if Impulse3(j,:)< 1e-4
+%         Impulse3(j,:)=0;
+%     end
     
 end
 Impulse3;
@@ -1015,11 +1022,10 @@ for i=2:Steps
         psi = 0.1;
         
         %Variables for  Knew
-        nu=0.3;
-        chi=0.8;
-        lambda=0.2;
-        eta= 0.1;
-        
+        nu=0.5;
+        chi=chi_val; 
+        lambda=lambda_val; 
+        eta=eta_val; 
         
     elseif C>0
         
@@ -1050,10 +1056,10 @@ for i=2:Steps
         psi = 0.1; 
         
         %Variables for  Knew
-        nu=0.3;
-        chi=0.8; 
-        lambda=0.2; 
-        eta= 0.1; 
+    nu=0.5;
+        chi=chi_val; 
+        lambda=lambda_val; 
+        eta=eta_val; 
         
     end
     C;
@@ -1078,6 +1084,7 @@ for i=2:Steps
         S_Kt(i)=rho_K*S_Kt(i-1)+mu_Kt;
         
         [x,C,I,A,K,R ,y, z, l]=optimizationExpectedUtility(S,DF, C,I,A,K,C0,I0,A0,K0,C_target, I_target, A_target, K_target, nu, chi, lambda, eta,alpha,beta,tau, omega, theta, iota, sigma,w_I1, w_I2, phi_1, phi_2, gamma, delta, epsilon, psi, S_Kt(i), S_Ct(i), S_It(i),S_At(i),S0_Ct(i), S0_It(i), S0_At(i), S0_Kt(i), wC,wI,wA,wK);
+        K
     else
         mu_Ct=0;
         mu_It=0;
@@ -1164,11 +1171,10 @@ for i=2:Steps
         psi = 0.1;
         
         %Variables for  Knew
-        nu=0.3;
-        chi=0.8;
-        lambda=0.2;
-        eta= 0.1;
-        
+ nu=0.5;
+        chi=chi_val; 
+        lambda=lambda_val; 
+        eta=eta_val; 
         
     elseif C>0
         
@@ -1199,10 +1205,10 @@ for i=2:Steps
         psi = 0.1; 
         
         %Variables for  Knew
-        nu=0.3;
-        chi=0.8; 
-        lambda=0.2; 
-        eta= 0.1; 
+      nu=0.5;
+        chi=chi_val; 
+        lambda=lambda_val; 
+        eta=eta_val; 
         
         
     end
@@ -1228,6 +1234,7 @@ for i=2:Steps
         S_Kt(i)=rho_K*S_Kt(i-1)+mu_Kt;
         
         [x,C,I,A,K,R, y, z, l]=optimizationExpectedUtility(S,DF, C,I,A,K,C0,I0,A0,K0,C_target, I_target, A_target, K_target, nu, chi, lambda, eta,alpha,beta,tau, omega, theta, iota, sigma,w_I1, w_I2, phi_1, phi_2, gamma, delta, epsilon, psi, S_Kt(i), S_Ct(i), S_It(i),S_At(i),S0_Ct(i), S0_It(i), S0_At(i), S0_Kt(i), wC,wI,wA,wK);
+        K
     else
         mu_Ct=0;
         mu_It=0;
@@ -1254,9 +1261,9 @@ Z04;
 for j = 1:Steps
     
     Impulse4(j,:)=Z4(j,:)-Z04(j,:);
-    if Impulse4(j,:)< 1e-4
-        Impulse4(j,:)=0;
-    end
+%     if Impulse4(j,:)< 1e-4
+%         Impulse4(j,:)=0;
+%     end
     
 end
 Impulse4;
@@ -1289,3 +1296,21 @@ subplot(3,2,4); semilogx([Impulse3(:,5), Impulse4(:,5)]);title('K')
 legend('ImpulseA', 'ImpulseK')
 subplot(3,2,5); semilogx([Impulse3(:,6), Impulse4(:,6)]);title('R')
 legend('ImpulseA', 'ImpulseK')
+
+RC=sum(Impulse1(:,6)); 
+RI=sum(Impulse2(:,6)); 
+RA=sum(Impulse3(:,6)); 
+RK=sum(Impulse4(:,6)); 
+
+
+KC=sum(Impulse1(:,5)); 
+KI=sum(Impulse2(:,5)); 
+KA=sum(Impulse3(:,5)); 
+KK=sum(Impulse4(:,5)); 
+
+
+
+TotalR=[RC RI RA RK]
+
+TotalK=[KC KI KA KK]
+
